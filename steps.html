@@ -1,0 +1,643 @@
+<div class="fpdeck-wrap" id="fpdeckCourseSort">
+  <div class="fpdeck-panel fpdeck-panel-task fpdeck-active">
+    <div class="fpdeck-head">
+      <div>
+        <div class="fpdeck-kicker">Упражнение</div>
+        <h3>Соберите структуру презентации</h3>
+      </div>
+      <div class="fpdeck-note">Перетащите слайды в правильном порядке</div>
+    </div>
+
+    <div class="fpdeck-body">
+      <div class="fpdeck-pool" aria-label="Слайды для выбора">
+        <div class="fpdeck-pool-title">Слайды</div>
+
+        <div class="fpdeck-card" draggable="true" data-id="risks">
+          Риски и стресс-сценарий
+        </div>
+
+        <div class="fpdeck-card" draggable="true" data-id="appendix">
+          Приложение с детализацией расчетов
+        </div>
+
+        <div class="fpdeck-card" draggable="true" data-id="why">
+          Почему проект нужен сейчас
+        </div>
+
+        <div class="fpdeck-card" draggable="true" data-id="decision">
+          Суть проекта и решение, которое нужно принять
+        </div>
+
+        <div class="fpdeck-card" draggable="true" data-id="finance">
+          Источник финансирования и способность обслуживать кредит
+        </div>
+
+        <div class="fpdeck-card" draggable="true" data-id="economics">
+          Экономика проекта: инвестиции, EBITDA, окупаемость
+        </div>
+
+        <div class="fpdeck-card" draggable="true" data-id="final">
+          Итоговое решение и условия согласования
+        </div>
+      </div>
+
+      <div class="fpdeck-slots" aria-label="Порядок слайдов">
+        <div class="fpdeck-slot" data-correct="decision">
+          <span>1</span>
+        </div>
+
+        <div class="fpdeck-slot" data-correct="why">
+          <span>2</span>
+        </div>
+
+        <div class="fpdeck-slot" data-correct="economics">
+          <span>3</span>
+        </div>
+
+        <div class="fpdeck-slot" data-correct="finance">
+          <span>4</span>
+        </div>
+
+        <div class="fpdeck-slot" data-correct="risks">
+          <span>5</span>
+        </div>
+
+        <div class="fpdeck-slot" data-correct="final">
+          <span>6</span>
+        </div>
+
+        <div class="fpdeck-slot" data-correct="appendix">
+          <span>7</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="fpdeck-footer">
+      <div class="fpdeck-message" aria-live="polite">
+        Подсказка: начинайте с решения, а детали расчетов оставьте в приложении.
+      </div>
+      <button class="fpdeck-btn" type="button">Проверить</button>
+    </div>
+  </div>
+
+  <div class="fpdeck-panel fpdeck-panel-result">
+    <div class="fpdeck-result">
+      <div class="fpdeck-result-icon">✓</div>
+      <h3>Верно</h3>
+
+      <p>
+        Презентация должна вести аудиторию от решения к обоснованию.
+        Сначала покажите, что предлагаете согласовать и зачем проект нужен сейчас.
+      </p>
+
+      <p>
+        Затем дайте экономику: инвестиции, EBITDA, окупаемость и способность
+        обслуживать кредит. После этого вынесите риски и стресс-сценарий:
+        CEO и кредитному инвесткомитету важно видеть не только базовый эффект,
+        но и слабые места проекта.
+      </p>
+
+      <p>
+        Финальный слайд должен закреплять решение и условия согласования,
+        а детализацию расчетов лучше оставить в приложении.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .fpdeck-wrap,
+  .fpdeck-wrap * {
+    box-sizing: border-box;
+  }
+
+  .fpdeck-wrap {
+    width: 757px;
+    height: 500px;
+    max-width: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #173f40;
+    background: #DFF2F3;
+    border: 2px solid #367879;
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .fpdeck-panel {
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  .fpdeck-panel.fpdeck-active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fpdeck-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    height: 56px;
+    margin-bottom: 10px;
+  }
+
+  .fpdeck-kicker {
+    display: inline-block;
+    margin-bottom: 4px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #367879;
+    color: #ffffff;
+    font-size: 11px;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .fpdeck-head h3 {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.15;
+    color: #173f40;
+  }
+
+  .fpdeck-note {
+    max-width: 230px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: #CADDDF;
+    font-size: 13px;
+    line-height: 1.25;
+  }
+
+  .fpdeck-body {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 14px;
+    height: 356px;
+    min-height: 356px;
+    max-height: 356px;
+  }
+
+  .fpdeck-pool,
+  .fpdeck-slots {
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.62);
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .fpdeck-pool-title {
+    height: 18px;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #367879;
+  }
+
+  .fpdeck-card {
+    height: 38px;
+    min-height: 38px;
+    max-height: 38px;
+    margin-bottom: 6px;
+    padding: 7px 9px;
+    border: 1px solid #CADDDF;
+    border-radius: 10px;
+    background: #ffffff;
+    font-size: 12.5px;
+    line-height: 1.18;
+    cursor: grab;
+    box-shadow: 0 2px 0 rgba(54, 120, 121, 0.12);
+    user-select: none;
+    overflow: hidden;
+  }
+
+  .fpdeck-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .fpdeck-card:active {
+    cursor: grabbing;
+  }
+
+  .fpdeck-card.fpdeck-dragging {
+    opacity: 0.45;
+  }
+
+  .fpdeck-card.fpdeck-selected {
+    outline: 2px solid #367879;
+    outline-offset: 1px;
+  }
+
+  .fpdeck-slots {
+    display: grid;
+    grid-template-rows: repeat(7, 42px);
+    gap: 6px;
+  }
+
+  .fpdeck-slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+    padding: 4px 7px 4px 36px;
+    border: 2px dashed #CADDDF;
+    border-radius: 12px;
+    background: rgba(223, 242, 243, 0.7);
+    transition: border-color 0.15s ease, background 0.15s ease;
+    overflow: hidden;
+  }
+
+  .fpdeck-slot span {
+    position: absolute;
+    left: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #367879;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .fpdeck-slot .fpdeck-card {
+    width: 100%;
+    height: 30px;
+    min-height: 30px;
+    max-height: 30px;
+    margin: 0;
+    padding: 4px 7px;
+    font-size: 10.8px;
+    line-height: 1.08;
+    overflow: hidden;
+    box-shadow: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .fpdeck-slot.fpdeck-over {
+    border-color: #367879;
+    background: #DFF2F3;
+  }
+
+  .fpdeck-slot.fpdeck-wrong {
+    border-color: #F5811F;
+    background: rgba(245, 129, 31, 0.16);
+  }
+
+  .fpdeck-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: 44px;
+    margin-top: 10px;
+  }
+
+  .fpdeck-message {
+    flex: 1;
+    height: 36px;
+    padding: 7px 10px;
+    border-radius: 12px;
+    background: #CADDDF;
+    font-size: 12.5px;
+    line-height: 1.25;
+    overflow: hidden;
+  }
+
+  .fpdeck-btn {
+    height: 36px;
+    border: 0;
+    border-radius: 12px;
+    background: #367879;
+    color: #ffffff;
+    padding: 0 18px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .fpdeck-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .fpdeck-btn:active {
+    transform: translateY(0);
+    opacity: 0.86;
+  }
+
+  .fpdeck-panel-result {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fpdeck-result {
+    width: 88%;
+    max-width: 650px;
+    padding: 24px 32px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 2px solid #367879;
+    text-align: center;
+    box-shadow: 0 12px 26px rgba(54, 120, 121, 0.18);
+  }
+
+  .fpdeck-result-icon {
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: #367879;
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 700;
+  }
+
+  .fpdeck-result h3 {
+    margin: 0 0 12px;
+    font-size: 25px;
+    color: #367879;
+  }
+
+  .fpdeck-result p {
+    margin: 0 0 10px;
+    font-size: 14.5px;
+    line-height: 1.42;
+  }
+
+  .fpdeck-result p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 620px) {
+    .fpdeck-wrap {
+      width: 100%;
+      height: 500px;
+      padding: 12px;
+      border-radius: 14px;
+    }
+
+    .fpdeck-head {
+      height: 52px;
+    }
+
+    .fpdeck-head h3 {
+      font-size: 18px;
+    }
+
+    .fpdeck-note {
+      display: none;
+    }
+
+    .fpdeck-body {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      height: 360px;
+      min-height: 360px;
+      max-height: 360px;
+    }
+
+    .fpdeck-pool,
+    .fpdeck-slots {
+      padding: 8px;
+    }
+
+    .fpdeck-card {
+      height: 38px;
+      min-height: 38px;
+      max-height: 38px;
+      padding: 6px 7px;
+      font-size: 11px;
+      line-height: 1.12;
+    }
+
+    .fpdeck-slots {
+      grid-template-rows: repeat(7, 42px);
+      gap: 6px;
+    }
+
+    .fpdeck-slot {
+      height: 42px;
+      min-height: 42px;
+      max-height: 42px;
+      padding-left: 32px;
+    }
+
+    .fpdeck-slot span {
+      left: 7px;
+      width: 21px;
+      height: 21px;
+      font-size: 11px;
+    }
+
+    .fpdeck-slot .fpdeck-card {
+      height: 30px;
+      min-height: 30px;
+      max-height: 30px;
+      font-size: 9.8px;
+      line-height: 1.05;
+      padding: 4px 6px;
+    }
+
+    .fpdeck-message {
+      font-size: 11.5px;
+    }
+
+    .fpdeck-btn {
+      padding: 0 12px;
+    }
+
+    .fpdeck-result {
+      width: 94%;
+      padding: 22px;
+    }
+
+    .fpdeck-result p {
+      font-size: 13.5px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const root = document.getElementById('fpdeckCourseSort');
+    if (!root) return;
+
+    const taskPanel = root.querySelector('.fpdeck-panel-task');
+    const resultPanel = root.querySelector('.fpdeck-panel-result');
+    const pool = root.querySelector('.fpdeck-pool');
+    const slots = Array.from(root.querySelectorAll('.fpdeck-slot'));
+    const checkBtn = root.querySelector('.fpdeck-btn');
+    const message = root.querySelector('.fpdeck-message');
+
+    let draggedCard = null;
+    let selectedCard = null;
+
+    function clearWrongState() {
+      slots.forEach(function (slot) {
+        slot.classList.remove('fpdeck-wrong');
+      });
+    }
+
+    function setMessage(text) {
+      message.textContent = text;
+    }
+
+    function getCardFromTarget(target) {
+      return target.closest('.fpdeck-card');
+    }
+
+    function moveCardToSlot(card, slot) {
+      const existingCard = slot.querySelector('.fpdeck-card');
+
+      if (existingCard && existingCard !== card) {
+        pool.appendChild(existingCard);
+      }
+
+      slot.appendChild(card);
+      card.classList.remove('fpdeck-selected');
+      selectedCard = null;
+      clearWrongState();
+    }
+
+    function moveCardToPool(card) {
+      pool.appendChild(card);
+      card.classList.remove('fpdeck-selected');
+      selectedCard = null;
+      clearWrongState();
+    }
+
+    function switchToResult() {
+      taskPanel.classList.remove('fpdeck-active');
+      resultPanel.classList.add('fpdeck-active');
+    }
+
+    root.addEventListener('dragstart', function (event) {
+      const card = getCardFromTarget(event.target);
+      if (!card) return;
+
+      draggedCard = card;
+      card.classList.add('fpdeck-dragging');
+      event.dataTransfer.effectAllowed = 'move';
+      event.dataTransfer.setData('text/plain', card.dataset.id);
+    });
+
+    root.addEventListener('dragend', function () {
+      if (draggedCard) {
+        draggedCard.classList.remove('fpdeck-dragging');
+      }
+
+      draggedCard = null;
+
+      slots.forEach(function (slot) {
+        slot.classList.remove('fpdeck-over');
+      });
+    });
+
+    slots.forEach(function (slot) {
+      slot.addEventListener('dragover', function (event) {
+        event.preventDefault();
+        slot.classList.add('fpdeck-over');
+      });
+
+      slot.addEventListener('dragleave', function () {
+        slot.classList.remove('fpdeck-over');
+      });
+
+      slot.addEventListener('drop', function (event) {
+        event.preventDefault();
+        slot.classList.remove('fpdeck-over');
+
+        if (draggedCard) {
+          moveCardToSlot(draggedCard, slot);
+        }
+      });
+    });
+
+    pool.addEventListener('dragover', function (event) {
+      event.preventDefault();
+    });
+
+    pool.addEventListener('drop', function (event) {
+      event.preventDefault();
+
+      if (draggedCard) {
+        moveCardToPool(draggedCard);
+      }
+    });
+
+    root.addEventListener('click', function (event) {
+      const card = getCardFromTarget(event.target);
+      const slot = event.target.closest('.fpdeck-slot');
+
+      if (card) {
+        if (selectedCard === card) {
+          card.classList.remove('fpdeck-selected');
+          selectedCard = null;
+          return;
+        }
+
+        root.querySelectorAll('.fpdeck-card').forEach(function (item) {
+          item.classList.remove('fpdeck-selected');
+        });
+
+        selectedCard = card;
+        card.classList.add('fpdeck-selected');
+        return;
+      }
+
+      if (slot && selectedCard) {
+        moveCardToSlot(selectedCard, slot);
+      }
+    });
+
+    checkBtn.addEventListener('click', function () {
+      clearWrongState();
+
+      let allFilled = true;
+      let allCorrect = true;
+
+      slots.forEach(function (slot) {
+        const card = slot.querySelector('.fpdeck-card');
+
+        if (!card) {
+          allFilled = false;
+          allCorrect = false;
+          slot.classList.add('fpdeck-wrong');
+          return;
+        }
+
+        if (card.dataset.id !== slot.dataset.correct) {
+          allCorrect = false;
+          slot.classList.add('fpdeck-wrong');
+        }
+      });
+
+      if (!allFilled) {
+        setMessage('Заполните все ячейки. Пустые или неверные места подсвечены оранжевым.');
+        return;
+      }
+
+      if (!allCorrect) {
+        setMessage('Порядок пока неверный. Оранжевым отмечены ячейки, которые нужно переставить.');
+        return;
+      }
+
+      switchToResult();
+    });
+  })();
+</script>
